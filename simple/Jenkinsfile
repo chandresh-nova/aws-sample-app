@@ -10,10 +10,7 @@ node {
 
     stage('Build') {
             dir('simple') {
-                sh 'mvn clean install'
-                def pom = readMavenPom file:'pom.xml'
-                print pom.version
-                env.version = pom.version
+                sh 'mvn clean package'
             }
         }
 
