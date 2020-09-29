@@ -13,6 +13,11 @@ node {
 	   // Build using maven
        def mvnHome = tool (name: 'maven', type: 'maven') + '/bin/mvn'
 	   sh "${mvnHome} clean package deploy"
+
+	   def pom = readMavenPom file:'pom.xml'
+
+       print pom.version
+       env.version = pom.version
    }
 
 }
